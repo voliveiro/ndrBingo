@@ -1,0 +1,154 @@
+/* Apply box-sizing globally */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #ffffff; /* Set background color to white */
+}
+
+.app {
+    display: flex;
+    flex-direction: column; /* Arrange elements in a column */
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    padding: 0 20px; /* Ensure 20px padding on left and right */
+    background-color: #ffffff;
+    text-align: center; /* Center text within the app */
+}
+
+h1, p, h3 {
+    margin: 0 0 10px; /* Adjust margins to ensure proper spacing */
+}
+
+h1 {
+    font-size: 24px; /* Adjust title size */
+}
+
+p {
+    font-size: 16px; /* Adjust paragraph size */
+}
+
+h3 {
+    max-width: 100%; /* Allow the text to scale down */
+    font-size: 16px; /* Adjust font size for mobile */
+    line-height: 1.5; /* Improve readability */
+}
+
+/* Ensure the bingo card container has padding */
+#bingo-banner-container {
+    width: 100%; /* Ensure the banner container takes full width */
+    display: flex;
+    justify-content: center; /* Center the banner horizontally */
+    margin-bottom: 20px; /* Add some space below the banner */
+}
+
+#bingo-banner {
+    font-size: 48px; /* Large font size for desktop */
+    font-weight: bold; /* Make the text bold */
+    color: red; /* Bright red color */
+    visibility: hidden; /* Hidden by default */
+    opacity: 0; /* Start with zero opacity */
+    text-align: center; /* Center the banner text */
+    position: relative; /* Position relative to enable close button positioning */
+    transition: opacity 0.5s; /* Smooth transition for opacity */
+    background-color: #ffffff; /* Ensure background is white */
+    padding: 10px; /* Add padding inside the banner */
+}
+
+#bingo-banner.show {
+    visibility: visible; /* Make the banner visible */
+    opacity: 1; /* Full opacity */
+}
+
+#close-banner {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    font-size: 24px;
+    background: none;
+    border: none;
+    color: red;
+}
+
+#close-banner:hover {
+    color: darkred;
+}
+
+/* Ensure bingo card is centered and adjusts to mobile screens */
+#bingo-card {
+    display: grid;
+    grid-template-columns: repeat(5, 120px); /* Default size for larger screens */
+    grid-template-rows: repeat(5, 120px); /* Default size for larger screens */
+    gap: 5px; /* Maintain the gap between squares */
+    background-color: white; /* Ensure background is white */
+    margin: 0 auto; /* Center the card horizontally */
+    padding: 10px; /* Add padding around the card */
+}
+
+/* Style for individual squares */
+.square {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f0f0f0; /* Off-white color for squares */
+    border: 2px solid #cccccc; /* Slightly darker border for contrast */
+    cursor: pointer;
+    font-size: 18px; /* Default font size for larger screens */
+    font-weight: bold;
+    color: black; /* Ensure the text color is black */
+    padding: 10px; /* Add padding inside the box */
+}
+
+.square.selected {
+    background-color: #ffff00; /* Bright yellow for selected squares */
+    color: black; /* Keep the text color black */
+}
+
+.square.empty {
+    background-color: #ffffff; /* White for the empty center square */
+    border: 2px solid transparent;
+    cursor: default;
+}
+
+/* Media query for mobile devices */
+@media (max-width: 600px) {
+    .app {
+        padding: 0 10px; /* Ensure 10px padding on left and right for mobile */
+    }
+
+    #bingo-card {
+        grid-template-columns: repeat(5, 80px); /* Adjust size for smaller screens */
+        grid-template-rows: repeat(5, 80px); /* Adjust size for smaller screens */
+        margin: 0 auto; /* Center the card horizontally */
+        padding: 10px; /* Add padding around the card */
+    }
+
+    .square {
+        font-size: 12px; /* Adjust font size for mobile */
+        padding: 5px; /* Reduce padding for smaller screens */
+    }
+
+    h1 {
+        font-size: 20px; /* Adjust title size for mobile */
+    }
+
+    p {
+        font-size: 14px; /* Adjust paragraph size for mobile */
+    }
+
+    h3 {
+        font-size: 14px; /* Adjust text size for mobile */
+    }
+
+    #bingo-banner {
+        font-size: 24px; /* Adjust banner size for mobile */
+    }
+}
