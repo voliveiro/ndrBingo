@@ -84,12 +84,6 @@ h3 {
 #bingo-banner.show {
     visibility: visible; /* Make the banner visible */
     opacity: 1; /* Full opacity */
-    animation: flashBanner 2s linear infinite; /* Flashing animation */
-}
-
-@keyframes flashBanner {
-    0% { transform: translateX(-100%); }
-    100% { transform: translateX(100%); }
 }
 
 #close-banner {
