@@ -36,15 +36,56 @@ h3 {
 }
 
 /* Ensure the bingo card container has padding */
+#bingo-banner-container {
+    width: 100%; /* Ensure the banner container takes full width */
+    display: flex;
+    justify-content: center; /* Center the banner horizontally */
+    margin-bottom: 20px; /* Add some space below the banner */
+}
+
+#bingo-banner {
+    font-size: 48px; /* Large font size for desktop */
+    font-weight: bold; /* Make the text bold */
+    color: red; /* Bright red color */
+    visibility: hidden; /* Hidden by default */
+    opacity: 0; /* Start with zero opacity */
+    text-align: center; /* Center the banner text */
+    position: relative; /* Position relative to enable close button positioning */
+    transition: opacity 0.5s; /* Smooth transition for opacity */
+    background-color: #ffffff; /* Ensure background is white */
+    padding: 10px; /* Add padding inside the banner */
+}
+
+#bingo-banner.show {
+    visibility: visible; /* Make the banner visible */
+    opacity: 1; /* Full opacity */
+}
+
+#close-banner {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    font-size: 24px;
+    background: none;
+    border: none;
+    color: red;
+}
+
+#close-banner:hover {
+    color: darkred;
+}
+
+/* Ensure bingo card is centered and adjusts to mobile screens */
 #bingo-card {
     display: grid;
     grid-template-columns: repeat(5, 120px); /* Default size for larger screens */
     grid-template-rows: repeat(5, 120px); /* Default size for larger screens */
     gap: 5px; /* Maintain the gap between squares */
-    margin-top: 20px; /* Add some space between the title and the bingo card */
     background-color: white; /* Ensure background is white */
 }
 
+/* Style for individual squares */
 .square {
     display: flex;
     justify-content: center;
@@ -67,38 +108,6 @@ h3 {
     background-color: #ffffff; /* White for the empty center square */
     border: 2px solid transparent;
     cursor: default;
-}
-
-#bingo-banner {
-    font-size: 48px; /* Large font size for desktop */
-    font-weight: bold; /* Make the text bold */
-    color: red; /* Bright red color */
-    visibility: hidden; /* Hidden by default */
-    opacity: 0; /* Start with zero opacity */
-    margin-top: 20px; /* Add some space above the banner */
-    text-align: center; /* Center the banner text */
-    position: relative; /* Position relative to enable close button positioning */
-    transition: opacity 0.5s; /* Smooth transition for opacity */
-}
-
-#bingo-banner.show {
-    visibility: visible; /* Make the banner visible */
-    opacity: 1; /* Full opacity */
-}
-
-#close-banner {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    cursor: pointer;
-    font-size: 24px;
-    background: none;
-    border: none;
-    color: red;
-}
-
-#close-banner:hover {
-    color: darkred;
 }
 
 /* Media query for mobile devices */

@@ -12,6 +12,7 @@ document.addEventListener("DOMContentLoaded", function () {
     ];
 
     let selectedSquares = Array(5).fill(null).map(() => Array(5).fill(false));
+    let bingoAchieved = false; // Flag to track if Bingo has been achieved
 
     function checkBingo() {
         for (let i = 0; i < 5; i++) {
@@ -65,10 +66,33 @@ document.addEventListener("DOMContentLoaded", function () {
     function showBingo() {
         bingoBanner.textContent = "Bingo!";
         bingoBanner.classList.add('show');
+        bingoAchieved = true; // Set the flag to true
+        disableClicks(); // Disable further clicks
     }
 
     function closeBanner() {
         bingoBanner.classList.remove('show');
+    }
+
+    function disableClicks() {
+        const squares = document.querySelectorAll('.square');
+        squares.forEach(square => {
+            square.removeEventListener('click', handleClick); // Remove click event listeners
+            square.style.cursor = 'default'; // Change cursor to default
+        });
+    }
+
+    function handleClick(event) {
+        const square = event.currentTarget;
+        const id = square.id.split('-');
+        const i = parseInt(id[1], 10);
+        const j = parseInt(id[2], 10);
+
+        square.classList.toggle('selected');
+        selectedSquares[i][j] = !selectedSquares[i][j];
+        if (checkBingo()) {
+            square.removeEventListener('click', handleClick); // Disable clicking after bingo
+        }
     }
 
     // Add close button
@@ -97,13 +121,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 });
             } else {
                 square.textContent = phrases[phraseIndex++];
-                square.addEventListener('click', () => {
-                    square.classList.toggle('selected');
-                    selectedSquares[i][j] = !selectedSquares[i][j];
-                    if (checkBingo()) {
-                        square.removeEventListener('click', () => {}); // Disable clicking after bingo
-                    }
-                });
+                square.addEventListener('click', handleClick); // Attach click event listener
             }
 
             bingoCard.appendChild(square);
