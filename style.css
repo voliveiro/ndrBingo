@@ -6,15 +6,9 @@
 }
 
 body {
-    display: flex;
-    flex-direction: column; /* Arrange elements in a column */
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
     margin: 0;
     font-family: Arial, sans-serif;
     background-color: #ffffff; /* Set background color to white */
-    padding: 10px; /* Add padding to avoid content touching the edges */
 }
 
 .app {
@@ -41,20 +35,14 @@ h3 {
     line-height: 1.5; /* Improve readability */
 }
 
-/* Container to limit the width of the content */
-.container {
-    max-width: 650px; /* Limit the width to make sure it fits well on larger screens */
-    width: 100%;
-    padding: 0 10px; /* Add padding on the sides for mobile */
-}
-
+/* Ensure the bingo card container has padding */
 #bingo-card {
     display: grid;
     grid-template-columns: repeat(5, 120px); /* Default size for larger screens */
     grid-template-rows: repeat(5, 120px); /* Default size for larger screens */
     gap: 5px; /* Maintain the gap between squares */
     margin-top: 20px; /* Add some space between the title and the bingo card */
-    padding: 0 20px; /* Add extra padding on the sides for mobile view */
+    background-color: white; /* Ensure background is white */
 }
 
 .square {
@@ -71,7 +59,7 @@ h3 {
 }
 
 .square.selected {
-    background-color: #e0e0e0; /* Slightly darker off-white when selected */
+    background-color: #ffff00; /* Bright yellow for selected squares */
     color: black; /* Keep the text color black */
 }
 
@@ -121,10 +109,14 @@ h3 {
 
 /* Media query for mobile devices */
 @media (max-width: 600px) {
+    .app {
+        padding: 0 10px; /* Ensure 10px padding on left and right for mobile */
+    }
+
     #bingo-card {
         grid-template-columns: repeat(5, 80px); /* Adjust size for smaller screens */
         grid-template-rows: repeat(5, 80px); /* Adjust size for smaller screens */
-        padding: 0 10px; /* Ensure padding is enough for mobile screens */
+        padding: 0; /* Remove extra padding */
     }
 
     .square {
