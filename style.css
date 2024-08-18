@@ -1,0 +1,99 @@
+body {
+    display: flex;
+    flex-direction: column; /* Arrange elements in a column */
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    padding: 10px; /* Add padding to avoid content touching the edges */
+    box-sizing: border-box; /* Ensure padding is included in the box size */
+}
+
+h1 {
+    font-size: 24px; /* Adjust title size */
+    text-align: center;
+    margin: 0;
+}
+
+h3 {
+    max-width: 100%; /* Allow the text to scale down */
+    text-align: center; /* Center the text */
+    margin: 10px 0; /* Add some margin for spacing */
+    font-size: 16px; /* Adjust font size for mobile */
+    line-height: 1.5; /* Improve readability */
+}
+
+/* Container to limit the width of the content */
+.container {
+    max-width: 650px; /* Limit the width to make sure it fits well on larger screens */
+    width: 100%;
+}
+
+#bingo-card {
+    display: grid;
+    grid-template-columns: repeat(5, 120px); /* Default size for larger screens */
+    grid-template-rows: repeat(5, 120px); /* Default size for larger screens */
+    gap: 5px; /* Maintain the gap between squares */
+    margin-top: 20px; /* Add some space between the title and the bingo card */
+}
+
+.square {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #e0e0e0;
+    border: 2px solid #cccccc;
+    cursor: pointer;
+    font-size: 18px; /* Default font size for larger screens */
+    font-weight: bold;
+    color: black; /* Ensure the text color is black */
+    padding: 10px; /* Add padding inside the box */
+    box-sizing: border-box; /* Ensure padding and border are included in the box size */
+}
+
+.square.selected {
+    background-color: yellow; /* Change the background to yellow when selected */
+    color: black; /* Keep the text color black */
+}
+
+.square.empty {
+    background-color: white;
+    border: 2px solid transparent;
+    cursor: default;
+}
+
+#bingo-banner {
+    font-size: 48px; /* Large font size for desktop */
+    font-weight: bold; /* Make the text bold */
+    color: red; /* Bright red color */
+    visibility: hidden; /* Hidden by default */
+    margin-top: 20px; /* Add some space above the banner */
+}
+
+/* Media query for mobile devices */
+@media (max-width: 600px) {
+    #bingo-card {
+        grid-template-columns: repeat(5, 80px); /* Adjust size for smaller screens */
+        grid-template-rows: repeat(5, 80px); /* Adjust size for smaller screens */
+    }
+
+    .square {
+        font-size: 12px; /* Adjust font size for mobile */
+        padding: 5px; /* Reduce padding for smaller screens */
+    }
+
+    h1 {
+        font-size: 20px; /* Adjust title size for mobile */
+    }
+
+    h3 {
+        font-size: 14px; /* Adjust text size for mobile */
+    }
+
+    #bingo-banner {
+        font-size: 24px; /* Adjust banner size for mobile */
+    }
+}
+
