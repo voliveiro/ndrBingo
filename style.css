@@ -83,6 +83,8 @@ h3 {
     grid-template-rows: repeat(5, 120px); /* Default size for larger screens */
     gap: 5px; /* Maintain the gap between squares */
     background-color: white; /* Ensure background is white */
+    margin: 0 auto; /* Center the card horizontally */
+    padding: 10px; /* Add padding around the card */
 }
 
 /* Style for individual squares */
@@ -119,7 +121,8 @@ h3 {
     #bingo-card {
         grid-template-columns: repeat(5, 80px); /* Adjust size for smaller screens */
         grid-template-rows: repeat(5, 80px); /* Adjust size for smaller screens */
-        padding: 0; /* Remove extra padding */
+        margin: 0 auto; /* Center the card horizontally */
+        padding: 10px; /* Add padding around the card */
     }
 
     .square {
