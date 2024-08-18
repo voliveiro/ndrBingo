@@ -17,6 +17,7 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
+    margin: 0 20px;
     padding: 0 20px; /* Ensure 20px padding on left and right */
     background-color: #ffffff;
 }
