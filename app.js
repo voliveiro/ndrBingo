@@ -100,6 +100,14 @@ document.addEventListener("DOMContentLoaded", function () {
         const i = parseInt(id[1], 10);
         const j = parseInt(id[2], 10);
 
+        if (i === 2 && j === 2) {
+            // Skip handling for center square if it is empty and the user hasn't added a phrase
+            if (square.classList.contains('empty')) {
+                return;
+            }
+        }
+
+        // Toggle the selected state of the square
         square.classList.toggle('selected');
         selectedSquares[i][j] = !selectedSquares[i][j];
         if (checkBingo()) {
@@ -126,9 +134,15 @@ document.addEventListener("DOMContentLoaded", function () {
             if (i === 2 && j === 2) {
                 square.classList.add('empty');
                 square.addEventListener('click', () => {
-                    const userPhrase = prompt("Enter your phrase for the center square:");
-                    if (userPhrase) {
-                        square.textContent = userPhrase;
+                    if (!square.textContent) { // Allow text entry only if empty
+                        const userPhrase = prompt("Enter your phrase for the center square:");
+                        if (userPhrase) {
+                            square.textContent = userPhrase;
+                            square.classList.remove('empty'); // Remove empty class after phrase is added
+                            // Remove the click event for text entry, add click event for selection
+                            square.removeEventListener('click', arguments.callee);
+                            square.addEventListener('click', handleClick);
+                        }
                     }
                 });
             } else {
