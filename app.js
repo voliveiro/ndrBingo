@@ -1,11 +1,12 @@
 console.log("app.js works");
+
 document.addEventListener("DOMContentLoaded", function () {
     const bingoCard = document.getElementById('bingo-card');
     const bingoBanner = document.getElementById('bingo-banner');
 
     const phrases = [
         "Inclusive", "Growth", "Compact", "Cohesion", "Identity", "Sustainable", "Innovation", "Digital", "Community", "Global",
-        "AI", "VUCA", "Resilience", "Security", "Disruption",
+        "Smart", "VUCA", "Resilience", "Security", "Disruption",
         "Success", "Skills", "Kampung", "Climate", "Meritocracy",
         "Complex", "Harness", "Synergy", "Strategy"
     ];
@@ -38,16 +39,14 @@ document.addEventListener("DOMContentLoaded", function () {
         for (let i = 0; i < 5; i++) {
             document.getElementById(`square-${row}-${i}`).classList.add('bingo-row');
         }
-        bingoBanner.textContent = "Bingo!";
-        bingoBanner.style.visibility = 'visible';
+        showBingo();
     }
 
     function highlightColumn(col) {
         for (let i = 0; i < 5; i++) {
             document.getElementById(`square-${i}-${col}`).classList.add('bingo-column');
         }
-        bingoBanner.textContent = "Bingo!";
-        bingoBanner.style.visibility = 'visible';
+        showBingo();
     }
 
     function highlightDiagonal(direction) {
@@ -60,9 +59,24 @@ document.addEventListener("DOMContentLoaded", function () {
                 document.getElementById(`square-${i}-${4 - i}`).classList.add('bingo-diagonal');
             }
         }
-        bingoBanner.textContent = "Bingo!";
-        bingoBanner.style.visibility = 'visible';
+        showBingo();
     }
+
+    function showBingo() {
+        bingoBanner.textContent = "Bingo!";
+        bingoBanner.classList.add('show');
+    }
+
+    function closeBanner() {
+        bingoBanner.classList.remove('show');
+    }
+
+    // Add close button
+    const closeButton = document.createElement('button');
+    closeButton.id = 'close-banner';
+    closeButton.textContent = '×';
+    closeButton.addEventListener('click', closeBanner);
+    bingoBanner.appendChild(closeButton);
 
     // Generate the 5x5 bingo card
     let phraseIndex = 0;
@@ -86,8 +100,9 @@ document.addEventListener("DOMContentLoaded", function () {
                 square.addEventListener('click', () => {
                     square.classList.toggle('selected');
                     selectedSquares[i][j] = !selectedSquares[i][j];
-                    square.style.backgroundColor = selectedSquares[i][j] ? 'yellow' : ''; // Toggle background color
-                    checkBingo();
+                    if (checkBingo()) {
+                        square.removeEventListener('click', () => {}); // Disable clicking after bingo
+                    }
                 });
             }
 

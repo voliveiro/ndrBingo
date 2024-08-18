@@ -71,7 +71,37 @@ h3 {
     font-weight: bold; /* Make the text bold */
     color: red; /* Bright red color */
     visibility: hidden; /* Hidden by default */
+    opacity: 0; /* Start with zero opacity */
     margin-top: 20px; /* Add some space above the banner */
+    text-align: center; /* Center the banner text */
+    position: relative; /* Position relative to enable close button positioning */
+    transition: opacity 0.5s; /* Smooth transition for opacity */
+}
+
+#bingo-banner.show {
+    visibility: visible; /* Make the banner visible */
+    opacity: 1; /* Full opacity */
+    animation: flashBanner 2s linear infinite; /* Flashing animation */
+}
+
+@keyframes flashBanner {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+}
+
+#close-banner {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    font-size: 24px;
+    background: none;
+    border: none;
+    color: red;
+}
+
+#close-banner:hover {
+    color: darkred;
 }
 
 /* Media query for mobile devices */
@@ -98,4 +128,3 @@ h3 {
         font-size: 24px; /* Adjust banner size for mobile */
     }
 }
-
