@@ -125,8 +125,8 @@ h3 {
     }
 
     #bingo-card {
-        grid-template-columns: repeat(5, 80px); /* Adjust size for smaller screens */
-        grid-template-rows: repeat(5, 80px); /* Adjust size for smaller screens */
+        grid-template-columns: repeat(5, calc(80px - 10px)); /* Adjust size for smaller screens, subtract 10px (5px each side) */
+        grid-template-rows: repeat(5, calc(80px - 10px)); /* Adjust size for smaller screens, subtract 10px (5px each side) */
         margin: 0 auto; /* Center the card horizontally */
         padding: 10px; /* Add padding around the card */
     }
