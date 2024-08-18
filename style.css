@@ -1,3 +1,10 @@
+/* Apply box-sizing globally */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
 body {
     display: flex;
     flex-direction: column; /* Arrange elements in a column */
@@ -6,9 +13,8 @@ body {
     height: 100vh;
     margin: 0;
     font-family: Arial, sans-serif;
-    background-color: #ffffff;
+    background-color: #ffffff; /* Set background color to white */
     padding: 10px; /* Add padding to avoid content touching the edges */
-    box-sizing: border-box; /* Ensure padding is included in the box size */
 }
 
 h1 {
@@ -30,7 +36,6 @@ h3 {
     max-width: 650px; /* Limit the width to make sure it fits well on larger screens */
     width: 100%;
     padding: 0 10px; /* Add padding on the sides for mobile */
-    box-sizing: border-box; /* Ensure padding is included in the box size */
 }
 
 #bingo-card {
@@ -40,30 +45,28 @@ h3 {
     gap: 5px; /* Maintain the gap between squares */
     margin-top: 20px; /* Add some space between the title and the bingo card */
     padding: 0 20px; /* Add extra padding on the sides for mobile view */
-    box-sizing: border-box; /* Ensure padding is included in the box size */
 }
 
 .square {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #f0f0f0;
-    border: 2px solid #cccccc;
+    background-color: #f0f0f0; /* Off-white color for squares */
+    border: 2px solid #cccccc; /* Slightly darker border for contrast */
     cursor: pointer;
     font-size: 18px; /* Default font size for larger screens */
     font-weight: bold;
     color: black; /* Ensure the text color is black */
     padding: 10px; /* Add padding inside the box */
-    box-sizing: border-box; /* Ensure padding and border are included in the box size */
 }
 
 .square.selected {
-    background-color: yellow; /* Change the background to yellow when selected */
+    background-color: #e0e0e0; /* Slightly darker off-white when selected */
     color: black; /* Keep the text color black */
 }
 
 .square.empty {
-    background-color: white;
+    background-color: #ffffff; /* White for the empty center square */
     border: 2px solid transparent;
     cursor: default;
 }
@@ -83,4 +86,51 @@ h3 {
 #bingo-banner.show {
     visibility: visible; /* Make the banner visible */
     opacity: 1; /* Full opacity */
-    animation: flashBanner 2s linear infinite; /* Flashing animati
+    animation: flashBanner 2s linear infinite; /* Flashing animation */
+}
+
+@keyframes flashBanner {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+}
+
+#close-banner {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    font-size: 24px;
+    background: none;
+    border: none;
+    color: red;
+}
+
+#close-banner:hover {
+    color: darkred;
+}
+
+/* Media query for mobile devices */
+@media (max-width: 600px) {
+    #bingo-card {
+        grid-template-columns: repeat(5, 80px); /* Adjust size for smaller screens */
+        grid-template-rows: repeat(5, 80px); /* Adjust size for smaller screens */
+        padding: 0 10px; /* Ensure padding is enough for mobile screens */
+    }
+
+    .square {
+        font-size: 12px; /* Adjust font size for mobile */
+        padding: 5px; /* Reduce padding for smaller screens */
+    }
+
+    h1 {
+        font-size: 20px; /* Adjust title size for mobile */
+    }
+
+    h3 {
+        font-size: 14px; /* Adjust text size for mobile */
+    }
+
+    #bingo-banner {
+        font-size: 24px; /* Adjust banner size for mobile */
+    }
+}
