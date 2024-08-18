@@ -11,6 +11,18 @@ document.addEventListener("DOMContentLoaded", function () {
         "Complex", "Harness", "Synergy", "Strategy"
     ];
 
+    // Function to shuffle the phrases array
+    function shuffleArray(array) {
+        for (let i = array.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [array[i], array[j]] = [array[j], array[i]];
+        }
+        return array;
+    }
+
+    // Shuffle the phrases
+    const shuffledPhrases = shuffleArray([...phrases]);
+
     let selectedSquares = Array(5).fill(null).map(() => Array(5).fill(false));
     let bingoAchieved = false; // Flag to track if Bingo has been achieved
 
@@ -120,7 +132,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     }
                 });
             } else {
-                square.textContent = phrases[phraseIndex++];
+                square.textContent = shuffledPhrases[phraseIndex++];
                 square.addEventListener('click', handleClick); // Attach click event listener
             }
 
