@@ -100,10 +100,10 @@ document.addEventListener("DOMContentLoaded", function () {
         const i = parseInt(id[1], 10);
         const j = parseInt(id[2], 10);
 
+        // Handle center square
         if (i === 2 && j === 2) {
-            // Skip handling for center square if it is empty and the user hasn't added a phrase
             if (square.classList.contains('empty')) {
-                return;
+                return; // Prevent further clicks if it's empty
             }
         }
 
