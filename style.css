@@ -17,6 +17,16 @@ body {
     padding: 10px; /* Add padding to avoid content touching the edges */
 }
 
+.app {
+    display: flex;
+    flex-direction: column; /* Arrange elements in a column */
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding: 0 20px; /* Ensure 20px padding on left and right */
+    background-color: #ffffff;
+}
+
 h1 {
     font-size: 24px; /* Adjust title size */
     text-align: center;
