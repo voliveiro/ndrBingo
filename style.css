@@ -6,7 +6,7 @@ body {
     height: 100vh;
     margin: 0;
     font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
+    background-color: #ffffff;
     padding: 10px; /* Add padding to avoid content touching the edges */
     box-sizing: border-box; /* Ensure padding is included in the box size */
 }
@@ -39,13 +39,15 @@ h3 {
     grid-template-rows: repeat(5, 120px); /* Default size for larger screens */
     gap: 5px; /* Maintain the gap between squares */
     margin-top: 20px; /* Add some space between the title and the bingo card */
+    padding: 0 20px; /* Add extra padding on the sides for mobile view */
+    box-sizing: border-box; /* Ensure padding is included in the box size */
 }
 
 .square {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #e0e0e0;
+    background-color: #f0f0f0;
     border: 2px solid #cccccc;
     cursor: pointer;
     font-size: 18px; /* Default font size for larger screens */
@@ -81,50 +83,4 @@ h3 {
 #bingo-banner.show {
     visibility: visible; /* Make the banner visible */
     opacity: 1; /* Full opacity */
-    animation: flashBanner 2s linear infinite; /* Flashing animation */
-}
-
-@keyframes flashBanner {
-    0% { transform: translateX(-100%); }
-    100% { transform: translateX(100%); }
-}
-
-#close-banner {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    cursor: pointer;
-    font-size: 24px;
-    background: none;
-    border: none;
-    color: red;
-}
-
-#close-banner:hover {
-    color: darkred;
-}
-
-/* Media query for mobile devices */
-@media (max-width: 600px) {
-    #bingo-card {
-        grid-template-columns: repeat(5, 80px); /* Adjust size for smaller screens */
-        grid-template-rows: repeat(5, 80px); /* Adjust size for smaller screens */
-    }
-
-    .square {
-        font-size: 12px; /* Adjust font size for mobile */
-        padding: 5px; /* Reduce padding for smaller screens */
-    }
-
-    h1 {
-        font-size: 20px; /* Adjust title size for mobile */
-    }
-
-    h3 {
-        font-size: 14px; /* Adjust text size for mobile */
-    }
-
-    #bingo-banner {
-        font-size: 24px; /* Adjust banner size for mobile */
-    }
-}
+    animation: flashBanner 2s linear infinite; /* Flashing animati
